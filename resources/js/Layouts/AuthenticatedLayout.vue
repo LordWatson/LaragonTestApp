@@ -1,13 +1,12 @@
 <script setup>
-import { ref } from 'vue';
-import ApplicationLogo from '@/Components/ApplicationLogo.vue';
-import Dropdown from '@/Components/Dropdown.vue';
-import DropdownLink from '@/Components/DropdownLink.vue';
-import NavLink from '@/Components/NavLink.vue';
-import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
-import { Link } from '@inertiajs/vue3';
+    import { ref } from 'vue';
+    import ApplicationLogo from '@/Components/ApplicationLogo.vue';
+    import Dropdown from '@/Components/Dropdown.vue';
+    import DropdownLink from '@/Components/DropdownLink.vue';
+    import NavLink from '@/Components/NavLink.vue';
+    import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 
-const showingNavigationDropdown = ref(false);
+    const showingNavigationDropdown = ref(false);
 </script>
 
 <template>
@@ -31,6 +30,9 @@ const showingNavigationDropdown = ref(false);
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                 <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
                                     Dashboard
+                                </NavLink>
+                                <NavLink v-if="$page.props.auth.isAdmin" :href="route('users.index')" :active="route().current('users')">
+                                    Users
                                 </NavLink>
                             </div>
                         </div>
