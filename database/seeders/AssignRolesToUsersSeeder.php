@@ -14,7 +14,8 @@ class AssignRolesToUsersSeeder extends Seeder
     public function run(): void
     {
         $admin = User::where('email', 'admin@admin.com')->first();
-        $admin->assignRole('admin');
+
+        if(isset($admin)) $admin->assignRole('admin');
 
         $users = User::whereNot('email', 'admin@admin.com')->get();
 
